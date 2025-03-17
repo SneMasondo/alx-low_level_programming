@@ -724,5 +724,14 @@ extern int __overflow (FILE *, int);
 
 # 2 "main.c" 2
 
-# 2 "main.c"
-int main(void) { return (0); }
+
+
+
+
+
+
+# 8 "main.c"
+int main(void)
+{
+    return (0);
+}
