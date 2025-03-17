@@ -2,6 +2,6 @@
 
 int main(void)
 {
-    printf("cisfun\n");
+    printf("cisfun");
     return 0;
 }
