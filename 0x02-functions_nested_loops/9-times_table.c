@@ -13,6 +13,7 @@ void times_table(void)
         {
             product = i * j;
 
+            /* Print first value without leading space */
             if (j == 0)
                 _putchar('0' + product);
             else
@@ -20,9 +21,13 @@ void times_table(void)
                 _putchar(',');
                 _putchar(' ');
 
+                /* Add extra space for alignment if product < 10 */
                 if (product < 10)
                     _putchar(' ');
-                _putchar('0' + (product / 10));
+
+                /* Print the product */
+                if (product >= 10)
+                    _putchar('0' + (product / 10));
                 _putchar('0' + (product % 10));
             }
         }
