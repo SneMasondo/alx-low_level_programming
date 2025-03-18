@@ -7,22 +7,22 @@
  */
 int main(void)
 {
-    char ch;
+	char ch;
 
-    /* Print numbers 0-9 */
-    for (ch = '0'; ch <= '9'; ch++)
-    {
-        putchar(ch);
-    }
+	/* Print numbers 0-9 */
+	for (ch = '0'; ch <= '9'; ch++)
+	{
+		putchar(ch);
+	}
 
-    /* Print letters a-f */
-    for (ch = 'a'; ch <= 'f'; ch++)
-    {
-        putchar(ch);
-    }
+	/* Print letters a-f */
+	for (ch = 'a'; ch <= 'f'; ch++)
+	{
+		putchar(ch);
+	}
 
-    /* Print newline */
-    putchar('\n');
+	/* Print newline */
+	putchar('\n');
 
-    return (0);
+	return (0);
 }
