@@ -1,4 +1,4 @@
-#include <unistd.h>
+#include <stdio.h>  /* Add the stdio.h header for putchar */
 
 int main(void)
 {
