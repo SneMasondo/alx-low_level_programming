@@ -1,19 +1,13 @@
-#include "main.h"
+#include <unistd.h>
 
 /**
- * _puts - Prints a string followed by a new line to stdout.
- * @str: Pointer to the string to be printed.
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
  *
- * Description: This function loops through each character of the string
- * and prints it using the _putchar function until the null-terminator is reached.
- * A new line is printed at the end.
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
-void _puts(char *str)
+int _putchar(char c)
 {
-	while (*str)
-	{
-		_putchar(*str);
-		str++;
-	}
-	_putchar('\n');
+    return (write(1, &c, 1));
 }
