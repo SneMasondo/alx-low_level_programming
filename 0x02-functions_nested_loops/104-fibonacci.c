@@ -16,10 +16,7 @@ int main(void)
 	for (count = 3; count <= 98; count++)
 	{
 		next = num1 + num2;
-		if (count != 98)
-			printf(", %lu", next);
-		else
-			printf(", %lu", next);  // Avoid the extra comma after the last number
+		printf(", %lu", next);
 
 		num1 = num2;
 		num2 = next;
