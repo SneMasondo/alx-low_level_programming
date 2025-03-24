@@ -1,19 +1,23 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * main - Entry point to test reset_to_98 function
+ * _strlen - Returns the length of a string.
+ * @s: Pointer to the string.
  *
- * Return: Always 0 (Success)
+ * Description: This function calculates the length of the string by
+ * iterating through each character until the null-terminator is reached.
+ * It then returns the number of characters.
+ *
+ * Return: Length of the string.
  */
-int main(void)
+int _strlen(char *s)
 {
-    int n;
+    int length = 0;
 
-    n = 402;
-    printf("n=%d\n", n);
-    reset_to_98(&n);
-    printf("n=%d\n", n);
-    
-    return (0);
+    while (s[length] != '\0')
+    {
+        length++;
+    }
+
+    return (length);
 }
