@@ -9,6 +9,7 @@
 char *leet(char *s)
 {
 	int i = 0;
+	int j;
 	char map[] = "aAeEoOtTlL";
 	char repl[] = "4433007711";
 
@@ -16,7 +17,7 @@ char *leet(char *s)
 	while (s[i] != '\0')
 	{
 		/* Check if the current character matches any of the characters in map */
-		for (int j = 0; map[j] != '\0'; j++)
+		for (j = 0; map[j] != '\0'; j++)
 		{
 			/* If a match is found, replace with the corresponding character in repl */
 			if (s[i] == map[j])
