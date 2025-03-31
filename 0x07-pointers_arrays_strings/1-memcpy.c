@@ -8,6 +8,14 @@
  * 
  * Return: Nothing.
  */
+
+void simple_print_buffer(char *buffer, unsigned int size) {
+    // Define simple_print_buffer function here
+}
+
+void _memcpy(char *dest, char *src, unsigned int n) {
+    // _memcpy function logic
+}
 void simple_print_buffer(char *buffer, unsigned int size)
 {
 	unsigned int i;
