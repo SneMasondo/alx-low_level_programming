@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stddef.h>  /* Ensure size_t is defined */
+
 void _puts_recursion(char *s);
 int _putchar(char c);
 void _print_rev_recursion(char *s);
