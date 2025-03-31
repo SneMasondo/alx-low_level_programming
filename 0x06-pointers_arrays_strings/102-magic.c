@@ -27,7 +27,7 @@ int main(void)
 	printf("%d\n", *p);
 
 	/* Line 19: add this line */
-	*(p - 3) = 98; /* This changes a[2] to 98 */
+	*(p - 2) = 98;
 
 	return (0);
 }
