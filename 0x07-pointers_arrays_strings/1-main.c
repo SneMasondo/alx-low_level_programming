@@ -10,21 +10,38 @@
  */
 void simple_print_buffer(char *buffer, unsigned int size)
 {
-    unsigned int i;
+	unsigned int i;
 
-    i = 0;
-    while (i < size)
-    {
-        if (i % 10)
-        {
-            printf(" ");
-        }
-        if (!(i % 10) && i)
-        {
-            printf("\n");
-        }
-        printf("0x%02x", buffer[i]);
-        i++;
-    }
-    printf("\n");
+	i = 0;
+	while (i < size)
+	{
+		if (i % 10)
+		{
+			printf(" ");
+		}
+		if (!(i % 10) && i)
+		{
+			printf("\n");
+		}
+		printf("0x%02x", buffer[i]);
+		i++;
+	}
+	printf("\n");
+}
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+	char buffer[98] = "First, solve the problem. Then, write the code.";
+	char buffer2[98] = "Talk is cheap. Show me the code.";
+
+	simple_print_buffer(buffer, 98);
+	_memcpy(buffer + 12, buffer2 + 10, 12);
+	printf("-------------------------------------------------\n");
+	simple_print_buffer(buffer, 98);	
+	return (0);
 }
