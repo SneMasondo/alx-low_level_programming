@@ -1,0 +1,7 @@
+int _strcmp(char *s1, char *s2)
+{
+    (void)s1;  /* Suppress unused parameter warning */
+    (void)s2;  /* Suppress unused parameter warning */
+    return 0;  /* Placeholder for now */
+}
+

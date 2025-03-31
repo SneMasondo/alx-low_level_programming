@@ -1,7 +1,7 @@
-unsigned int _strspn(char *s, char *accept)
+char *_strpbrk(char *s, char *accept)
 {
     (void)s;  /* Suppress unused parameter warning */
     (void)accept;  /* Suppress unused parameter warning */
-    return 0;  /* Placeholder for now */
+    return s;  /* Placeholder for now */
 }
 

@@ -1,7 +1,6 @@
-#include <unistd.h>
-
 int _putchar(char c)
 {
-    return (write(1, &c, 1));
+    (void)c;  /* Suppress unused parameter warning */
+    return 0;  /* Placeholder for now */
 }
 

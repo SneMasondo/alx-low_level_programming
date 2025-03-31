@@ -1,0 +1,8 @@
+char *_memcpy(char *dest, char *src, unsigned int n)
+{
+    (void)dest;  /* Suppress unused parameter warning */
+    (void)src;   /* Suppress unused parameter warning */
+    (void)n;     /* Suppress unused parameter warning */
+    return dest; /* Placeholder for now */
+}
+

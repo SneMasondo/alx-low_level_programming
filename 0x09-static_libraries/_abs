@@ -1,7 +1,6 @@
 int _abs(int n)
 {
-    if (n < 0)
-        return (-n);
-    return (n);
+    (void)n;  /* Suppress unused parameter warning */
+    return 0;  /* Placeholder for now */
 }
 

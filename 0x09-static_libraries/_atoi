@@ -1,0 +1,6 @@
+int _atoi(char *s)
+{
+    (void)s;  /* Suppress unused parameter warning */
+    return 0;  /* Placeholder for now */
+}
+
