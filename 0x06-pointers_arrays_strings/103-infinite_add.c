@@ -1,64 +1,49 @@
 #include "main.h"
 
 /**
- * infinite_add - adds two numbers.
- * @n1: first number
- * @n2: second number
- * @r: buffer to store the result
- * @size_r: size of the buffer
- *
- * Return: pointer to the result or 0 if the result doesn't fit in buffer
+ * infinite_add - Adds two numbers.
+ * @n1: First number.
+ * @n2: Second number.
+ * @r: Buffer to store the result.
+ * @size_r: Buffer size.
+ * Return: Pointer to the result or 0 if result cannot be stored.
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int len1 = 0, len2 = 0, carry = 0, sum, i = 0;
-	int max_len;
+    int len1 = 0, len2 = 0, carry = 0, i = 0, sum = 0;
 
-	/* Find the lengths of the input numbers */
-	while (n1[len1] != '\0')
-		len1++;
-	while (n2[len2] != '\0')
-		len2++;
+    // Find the length of both numbers
+    while (n1[len1] != '\0')
+        len1++;
+    while (n2[len2] != '\0')
+        len2++;
 
-	/* Find the maximum length of the two numbers */
-	max_len = (len1 > len2) ? len1 : len2;
+    // Ensure the buffer is large enough to store the result
+    if (size_r <= (len1 > len2 ? len1 : len2) + 1)
+        return (0);  // Not enough space for the result
 
-	/* Check if the result can fit in the buffer */
-	if (size_r <= max_len + 1)
-		return (0);
+    // Add the numbers starting from the last digit
+    while (len1 > 0 || len2 > 0 || carry > 0)
+    {
+        if (len1 > 0)
+            carry += n1[--len1] - '0';
+        if (len2 > 0)
+            carry += n2[--len2] - '0';
+        r[i++] = (carry % 10) + '0';  // Store the current digit in the result
+        carry /= 10;  // Carry for the next iteration
+    }
 
-	/* Add the numbers from the end, digit by digit */
-	while (len1 > 0 || len2 > 0 || carry > 0)
-	{
-		if (len1 > 0)
-			carry += n1[--len1] - '0';
-		if (len2 > 0)
-			carry += n2[--len2] - '0';
+    // Null-terminate the result
+    r[i] = '\0';
 
-		/* Store the result in the buffer */
-		r[i++] = (carry % 10) + '0';
+    // Reverse the result string to match correct order
+    for (int j = 0, k = i - 1; j < k; j++, k--)
+    {
+        char temp = r[j];
+        r[j] = r[k];
+        r[k] = temp;
+    }
 
-		/* Update carry */
-		carry /= 10;
-	}
-
-	/* Add null terminator to the result string */
-	r[i] = '\0';
-
-	/* Reverse the result string to get the correct order */
-	int start = 0;
-	int end = i - 1;
-	char temp;
-
-	while (start < end)
-	{
-		temp = r[start];
-		r[start] = r[end];
-		r[end] = temp;
-		start++;
-		end--;
-	}
-
-	return (r);
+    return (r);
 }
 
