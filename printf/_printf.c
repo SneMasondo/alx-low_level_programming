@@ -1,49 +1,28 @@
 #include "main.h"
+#include <stdarg.h>
 
-/**
- * _printf - produces output according to a format
- * @format: character string containing format specifiers
- *
- * Return: number of characters printed (excluding null byte)
- */
 int _printf(const char *format, ...)
 {
-	va_list args;
-	int count = 0;
+    int count = 0;
+    va_list args;
+    const char *ptr;
 
-	if (!format)
-		return (-1);
-
-	va_start(args, format);
-	while (*format)
-	{
-		if (*format == '%' && (*(format + 1)))
-		{
-			format++;
-			if (*format == 'c')
-				count += _putchar(va_arg(args, int));
-			else if (*format == 's')
-			{
-				char *str = va_arg(args, char *);
-
-				if (!str)
-					str = "(null)";
-				while (*str)
-					count += _putchar(*str++);
-			}
-			else if (*format == '%')
-				count += _putchar('%');
-			else
-			{
-				count += _putchar('%');
-				count += _putchar(*format);
-			}
-		}
-		else
-			count += _putchar(*format);
-		format++;
-	}
-	va_end(args);
-	return (count);
+    va_start(args, format);
+    for (ptr = format; *ptr != '\0'; ptr++) {
+        if (*ptr == '%' && (*(ptr + 1) == 'c' || *(ptr + 1) == 's' || *(ptr + 1) == '%')) {
+            if (*(ptr + 1) == 'c')
+                count += _putchar(va_arg(args, int));  // %c
+            else if (*(ptr + 1) == 's')
+                for (char *str = va_arg(args, char *); *str != '\0'; str++) // %s
+                    count += _putchar(*str);
+            else if (*(ptr + 1) == '%')  // %%
+                count += _putchar('%');
+            ptr++; // Skip the next character (either c, s, or %)
+        } else {
+            count += _putchar(*ptr);
+        }
+    }
+    va_end(args);
+    return count;
 }
 
