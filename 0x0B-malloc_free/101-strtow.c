@@ -86,6 +86,7 @@ char **strtow(char *str)
 {
 	char **words;
 	int i = 0, k = 0, word_count = 0, word_length = 0;
+	int j;
 
 	if (str == NULL || str[0] == '\0')
 		return (NULL);
@@ -112,7 +113,7 @@ char **strtow(char *str)
 		if (words[k] == NULL)
 		{
 			/* Free previously allocated words */
-			for (int j = 0; j < k; j++)
+			for (j = 0; j < k; j++)
 				free(words[j]);
 			free(words);
 			return (NULL);
