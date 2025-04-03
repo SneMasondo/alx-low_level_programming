@@ -1,0 +1,6 @@
+void _puts(char *s)
+{
+    (void)s;  /* Suppress unused parameter warning */
+    /* Placeholder for now */
+}
+

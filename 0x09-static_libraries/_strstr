@@ -1,0 +1,7 @@
+char *_strstr(char *haystack, char *needle)
+{
+    (void)haystack;  /* Suppress unused parameter warning */
+    (void)needle;    /* Suppress unused parameter warning */
+    return haystack; /* Placeholder for now */
+}
+

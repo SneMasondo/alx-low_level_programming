@@ -1,0 +1,7 @@
+char *_strchr(char *s, char c)
+{
+    (void)s;  /* Suppress unused parameter warning */
+    (void)c;  /* Suppress unused parameter warning */
+    return s; /* Placeholder for now */
+}
+

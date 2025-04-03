@@ -1,0 +1,7 @@
+char *_strpbrk(char *s, char *accept)
+{
+    (void)s;  /* Suppress unused parameter warning */
+    (void)accept;  /* Suppress unused parameter warning */
+    return s;  /* Placeholder for now */
+}
+

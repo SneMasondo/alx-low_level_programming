@@ -1,0 +1,6 @@
+int _isdigit(int c)
+{
+    (void)c;  /* Suppress unused parameter warning */
+    return 0;  /* Placeholder for now */
+}
+
