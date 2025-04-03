@@ -22,27 +22,58 @@ int count_words(char *str)
 }
 
 /**
- * allocate_word - Allocates memory and copies a word from the string.
+ * skip_spaces - Skips spaces in a string.
+ * @str: The string to skip spaces in.
+ * @i: The current index in the string.
+ *
+ * Return: The next index after skipping spaces.
+ */
+int skip_spaces(char *str, int i)
+{
+	while (str[i] == ' ')
+		i++;
+
+	return i;
+}
+
+/**
+ * word_len - Calculates the length of a word in the string.
  * @str: The string containing the word.
- * @start: The start index of the word.
+ * @i: The starting index of the word.
+ *
+ * Return: The length of the word.
+ */
+int word_len(char *str, int i)
+{
+	int length = 0;
+
+	while (str[i + length] && str[i + length] != ' ')
+		length++;
+
+	return length;
+}
+
+/**
+ * alloc_word - Allocates memory for a word and copies it.
+ * @str: The string containing the word.
+ * @i: The starting index of the word.
  * @length: The length of the word.
  *
- * Return: A pointer to the allocated word.
+ * Return: A pointer to the newly allocated word, or NULL on failure.
  */
-char *allocate_word(char *str, int start, int length)
+char *alloc_word(char *str, int i, int length)
 {
-	char *word;
-	int i;
+	char *word = malloc(sizeof(char) * (length + 1));
+	int j;
 
-	word = malloc(sizeof(char) * (length + 1));
 	if (word == NULL)
 		return (NULL);
 
-	for (i = 0; i < length; i++)
-		word[i] = str[start + i];
-	word[i] = '\0';
+	for (j = 0; j < length; j++)
+		word[j] = str[i + j];
+	word[j] = '\0';
 
-	return (word);
+	return word;
 }
 
 /**
@@ -54,51 +85,45 @@ char *allocate_word(char *str, int start, int length)
 char **strtow(char *str)
 {
 	char **words;
-	int i, k = 0, word_count, word_len = 0;
+	int i = 0, k = 0, word_count = 0, word_length = 0;
 
 	if (str == NULL || str[0] == '\0')
 		return (NULL);
 
-	for (i = 0; str[i]; i++)
-	{
-		if (str[i] != ' ')
-			break;
-	}
-	if (str[i] == '\0')
-		return (NULL);
-
+	/* Count the number of words */
 	word_count = count_words(str);
 
+	/* Allocate memory for the array of words */
 	words = malloc(sizeof(char *) * (word_count + 1));
 	if (words == NULL)
 		return (NULL);
 
-	i = 0;
+	/* Split the string into words */
 	while (str[i] && k < word_count)
 	{
-		if (str[i] == ' ')
-		{
-			i++;
-			continue;
-		}
+		/* Skip leading spaces */
+		i = skip_spaces(str, i);
 
-		word_len = 0;
-		while (str[i + word_len] && str[i + word_len] != ' ')
-			word_len++;
+		/* Calculate the length of the word */
+		word_length = word_len(str, i);
 
-		words[k] = allocate_word(str, i, word_len);
+		/* Allocate memory and copy the word */
+		words[k] = alloc_word(str, i, word_length);
 		if (words[k] == NULL)
 		{
+			/* Free previously allocated words */
 			for (int j = 0; j < k; j++)
 				free(words[j]);
 			free(words);
 			return (NULL);
 		}
 
-		i += word_len;
+		/* Move to the next word */
+		i += word_length;
 		k++;
 	}
 
+	/* Null-terminate the array of words */
 	words[k] = NULL;
 
 	return (words);
