@@ -15,29 +15,29 @@ int _printf(const char *format, ...) {
 
     for (ptr = format; *ptr != '\0'; ptr++) {
         if (*ptr == '%') {
-            ptr++;  // Move to the specifier
-            if (*ptr == 'c') {  // Handle %c
-                char c = va_arg(args, int);  // %c is promoted to int
+            ptr++;  /* Move to the specifier */
+            if (*ptr == 'c') {  /* Handle %c */
+                char c = va_arg(args, int);  /* %c is promoted to int */
                 _putchar(c);
                 count++;
-            } else if (*ptr == 's') {  // Handle %s
+            } else if (*ptr == 's') {  /* Handle %s */
                 char *str = va_arg(args, char *);
                 while (*str) {
                     _putchar(*str);
                     str++;
                     count++;
                 }
-            } else if (*ptr == '%') {  // Handle %%
+            } else if (*ptr == '%') {  /* Handle %% */
                 _putchar('%');
                 count++;
             } else {
-                // If the specifier is not handled, print the % symbol and the next character
+                /* If the specifier is not handled, print the % symbol and the next character */
                 _putchar('%');
                 _putchar(*ptr);
                 count += 2;
             }
         } else {
-            _putchar(*ptr);  // Print regular characters
+            _putchar(*ptr);  /* Print regular characters */
             count++;
         }
     }
