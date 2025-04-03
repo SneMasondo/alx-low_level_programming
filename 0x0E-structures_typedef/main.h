@@ -4,7 +4,7 @@
 #include <stddef.h>  /* Include stddef.h to use NULL */
 
 /**
- * struct dog - a structure for dog details
+ * struct dog - a dog structure
  * @name: name of the dog
  * @age: age of the dog
  * @owner: owner of the dog
@@ -16,14 +16,8 @@ struct dog
 	char *owner;
 };
 
-/**
- * init_dog - function prototype for initializing a struct dog
- * @d: pointer to struct dog
- * @name: name of the dog
- * @age: age of the dog
- * @owner: owner of the dog
- */
+/* Function prototype */
 void init_dog(struct dog *d, char *name, float age, char *owner);
 
-#endif
+#endif /* MAIN_H */
 
