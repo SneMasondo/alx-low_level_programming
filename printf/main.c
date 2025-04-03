@@ -6,10 +6,6 @@ int main(void)
 
     len = _printf("Hello %c, %s!\n", 'A', "world");
     _printf("Printed %d characters.\n", len);
-
-    len = _printf("Printing %% is tricky.\n");
-    _printf("Printed %d characters.\n", len);
-
     return 0;
 }
 
